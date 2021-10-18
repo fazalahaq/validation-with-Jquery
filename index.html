@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<fieldset>
+		<legend>form validation with Jquery</legend>
+		<label>First Name :</label>		<input type="text" id="fname">
+
+		<label id="lab1" class="error"> * This field is required </label><label id="label" class="error"> * Special characters not allowed </label><br><br>
+	
+		<label>Last  Name :</label>		<input type="text" id="lname">
+	
+		<label id="lab2" class="error"> *This field is reuired</label><label id="errorsecond" class="error"> * Special characters not allowed </label><br><br>
+	
+	
+		<label>Email :</label>			<input type="Email" id="mymail">
+	
+			<label id="lab3" class="error"> *This field is required </label><label  id="err" class="error"> *Enter valid email</label><br><br>
+	
+		<label>Password :</label>	<input type="Password" id="pswrd">
+	
+			<label id="lab4" class="error"> * This field is required *</label>
+			<label id="len" class="error"> ** password should be min 6 char long </label><br><br>
+	
+		<label>Confirm Password :</label>	<input type="Password" id="cnfpswrd">
+	
+		<label id="lab5" class="error">  * Please Re-enter the Password to confirm   </label><label id="lab6" class="error"> * Password doesn't match</label><br><br>
+	
+	
+		<button>cick me</button>
+	</fieldset>
+	
+
+<script src="index.js"></script>
+</body>
+</html>

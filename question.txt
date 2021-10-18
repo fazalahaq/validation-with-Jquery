@@ -1,0 +1,10 @@
+Create a User Registration form with five fields : First Name, Last Name, Email Address, Password and Confirm Password.
+Implement form validation using JQuery according to the following conditions :
+
+I. No form fields should be left empty.
+II. No special characters or numbers should be allowed on First Name and Last Name.
+III. Email address should be in proper format and valid.
+IV. Password should be atleast 6 characters.
+V. Password and Confirm Password values should be similar.
+
+Use CSS for designing.

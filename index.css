@@ -1,0 +1,15 @@
+.error{
+	color:red;
+	display: none;
+}
+
+label{
+	color: brown;
+}
+button{
+	background-color: chartreuse;
+	border-radius: 5px;
+}
+fieldset{
+	background-color: darkgray;
+}

@@ -1,0 +1,254 @@
+<body>
+        <input class="txtOnly" id="txtOnly" name="txtOnly" type="text" />
+        <script>
+            $( document ).ready(function() {
+                $( ".txtOnly" ).keypress(function(e) {
+                    var key = e.keyCode;
+                    if (key >= 48 && key <= 57) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>
+    </body>
+
+    // document.ready(function() {
+//     $("#fname").keyup(function(event) {
+//       fnam=$("#fname").val();
+//       fnam.validate(/[^a-zA-Z 0-9.]+/g, '');
+//       $("#fname").val(fnam);
+//     }
+//     );
+//   }
+//   );
+
+
+
+
+
+
+<input type="text" id="txtName"/>
+<span id="lblError" style="color: red"></span>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#txtName").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                $("#lblError").html("Only Alphabets and Numbers allowed.");
+            }
+ 
+            return isValid;
+        });
+    });
+</script>
+
+
+
+username validation
+ $('#usercheck').hide();
+        let usernameError = true;
+        $('.form-control').keyup(function () {
+            validateUsername();
+        });
+        
+        function validateUsername() {
+        let usernameValue = $('.form-control').val();
+        if (usernameValue.length == '') {
+        $('#usercheck').show();
+            usernameError = false;
+            return false;
+        }
+        
+        else if((usernameValue.length < 3)||
+                (usernameValue.length > 10)) {
+            $('#usercheck').show();
+            $('#usercheck').html
+    ("**length of username must be between 3 and 10");
+            usernameError = false;
+            return false;
+        }
+        else {
+            $('#usercheck').hide();
+        }
+        }
+
+
+
+        <!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.error{
+	color:red;
+	display: none;
+}
+label{
+	margin-left: 20px;
+	margin-right: 20px;
+	
+}
+
+input{
+	width: 240px;
+	height: 30PX;
+	border-radius: 5px;
+	font-family: cursive;
+	font-size: 20px;
+	padding: 5px;
+}
+
+button{
+	width: 130px;
+	height: 30px;
+	background-color: blue;
+	color:white;
+}
+</style>	
+</head>
+<body>
+
+	
+	<label>First Name :</label>		<input type="text" id="fname">
+
+	<label id="er1" class="error"> * This field is required </label><label id="errorfirst" class="error"> * Special characters not allowed </label><br><br>
+
+	<label>Last  Name :</label>		<input type="text" id="lname">
+
+	<label id="er2" class="error"> *This field is reuired</label><label id="errorsecond" class="error"> * Special characters not allowed </label><br><br>
+
+
+	<label>Email :</label>			<input type="Email" id="mymail">
+
+		<label id="er3" class="error"> *This field is required </label><label  id="err" class="error"> *Enter valid email</label><br><br>
+
+	<label>Password :</label>	<input type="Password" id="pswrd">
+
+		<label id="er4" class="error"> * This field is required *</label>
+		<label id="erlen" class="error"> ** password should be min 6 char long </label><br><br>
+
+	<label>Confirm Password :</label>	<input type="Password" id="cnfpswrd">
+
+	<label id="er5" class="error">  * Please Re-enter the Password to confirm   </label><label id="er6" class="error"> * Password doesn't match</label><br><br>
+
+
+	<button>cick me</button>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function()
+	{
+		$("button").click(function()
+		{
+			var fname=$("#fname").val();
+			var lname=$("#lname").val();
+			var emailid=$("#mymail").val();
+			var fpasword=$("#pswrd").val();
+			var conpaswrd=$("#cnfpswrd").val();
+
+			var regex = /^[A-Za-z0-9]+$/;
+
+
+
+
+		var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			var is_email=re.test(emailid);
+
+		if(fname=="")
+			$("#er1").show();
+
+		else
+		{
+			$("#er1").hide();
+
+			if(!regex.test(fname))
+			$("#errorfirst").show();
+
+			else
+			$("#errorfirst").hide();
+
+		}
+
+		
+
+		if(lname=="")
+			$("#er2").show();
+		else{
+
+			$("#er2").hide();
+
+			if(!regex.test(fname))
+			{
+			$("#errorsecond").show();
+				$("#er2").hide();
+			}
+			else
+			$("#errorsecond").hide();
+
+		}
+
+		
+		if(emailid=="")
+			$("#er3").show();
+		else
+		{
+			$("#er3").hide();
+		if(!is_email)
+			$("#err").show();
+		else
+			$("#err").hide();
+		}
+		
+	
+
+		if(fpasword=="")
+			$("#er4").show();
+		else
+		{
+			$("#er4").hide();
+			if(fpasword.length<6)
+				$("#erlen").show();
+			else
+				$("#erlen").hide();
+		}
+
+		if(conpaswrd=="")
+			$("#er5").show();
+		else
+			$("#er5").hide();
+
+		if(fpasword!=conpaswrd)
+			$("#er6").show();
+		else
+			$("#er6").hide();
+
+		});
+
+
+	});
+
+
+
+
+	
+</script>
+
+
+</body>
+</html>
+    

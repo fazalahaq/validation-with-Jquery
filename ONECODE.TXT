@@ -1,0 +1,143 @@
+// Document is ready
+$(document).ready(function () {
+    function fazal(){
+
+        var fname= $("#fname").val();
+        var lname=$("#lname").val();
+        var email=$("#email").val();
+        var pass=$("#password").val();
+        var cpass=$("#conpassword").val();
+    
+        if(fname==""){
+            $("#labelfname").show();
+        }
+        else{
+            $("#labelfname").hide();
+        }
+    }
+
+    // first name
+
+    $(function () {
+        $("#fname").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("Special character not allowed.");
+ 
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                $("#lblError").html("Special character not allowed.");
+            }
+ 
+            return isValid;
+        });
+    });
+
+
+//lastname
+    $(function () {
+        $("#lname").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                $("#lblError").html("Special character not allowed.");
+            }
+ 
+            return isValid;
+        });
+    });
+    // Validate Email
+        const email =$('email');
+        email.addEventListener('blur', ()=>{
+        let regex =/^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+        let s = email.value;
+        if(regex.test(s)){
+            email.classList.remove(
+                    'is-invalid');
+            emailError = true;
+            }
+            else{
+                email.classList.add(
+                    'is-invalid');
+                emailError = false;
+            }
+        })
+        
+    // Validate Password
+        $('#passcheck').hide();
+        let passwordError = true;
+        $('#password').keyup(function () {
+            validatePassword();
+        });
+        function validatePassword() {
+            let passwrdValue =
+                $('#password').val();
+            if (passwrdValue.length == '') {
+                $('#passcheck').show();
+                passwordError = false;
+                return false;
+            }
+            if ((passwrdValue.length < 6)) {
+                $('#passcheck').show();
+                $('#passcheck').html
+    ("length of your password must be atleast 6");
+                $('#passcheck').css("color", "red");
+                passwordError = false;
+                return false;
+            } else {
+                $('#passcheck').hide();
+            }
+        }
+            
+    // Validate Confirm Password
+        $('#conpasscheck').hide();
+        let confirmPasswordError = true;
+        $('#conpassword').keyup(function () {
+            validateConfirmPasswrd();
+        });
+        function validateConfirmPasswrd() {
+            let confirmPasswordValue =
+                $('#conpassword').val();
+            let passwrdValue =
+                $('#password').val();
+            if (passwrdValue != confirmPasswordValue) {
+                $('#conpasscheck').show();
+                $('#conpasscheck').html(
+                    "Password didn't Match");
+                $('#conpasscheck').css(
+                    "color", "red");
+                confirmPasswordError = false;
+                return false;
+            } else {
+                $('#conpasscheck').hide();
+            }
+        }
+        
+    // Submit button
+        $('#submitbtn').click(function () {
+            validateUsername();
+            validatePassword();
+            validateConfirmPasswrd();
+            validateEmail();
+            if ((usernameError == true) &&
+                (passwordError == true) &&
+                (confirmPasswordError == true) &&
+                (emailError == true)) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+    
